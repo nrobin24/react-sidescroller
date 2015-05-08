@@ -1,5 +1,5 @@
 var img = new Image();   // Create new img element
-img.src = '../images/portland-metropolis-1888.jpg';
+img.src = './images/portland-metropolis-1888.jpg';
 
 export default (xPos, context) => {
   context.save();

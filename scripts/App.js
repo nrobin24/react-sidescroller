@@ -1,24 +1,27 @@
 import mixins from 'baobab-react/mixins';
 import React from 'react';
 import CharacterCanvas from './CharacterCanvas';
+import BackgroundCanvas from './BackgroundCanvas';
 import actions from './actions';
 
 var mixin = mixins.root;
 
 export default React.createClass({
   mixins: [mixin],
-  handleLeftKey() {
-    actions.moveLeft();
+  handleKeyLeftPress() {
+    actions.keyLeft();
   },
-  handleRightKey() {
-    actions.moveRight();
+  handleKeyRightPress() {
+    actions.keyRight();
   },
   handleKeyDown(e) {
     let keyCommands = {
-      37: this.handleLeftKey,
-      39: this.handleRightKey
+      37: this.handleKeyLeftPress,
+      39: this.handleKeyRightPress
     };
-    keyCommands[e.keyCode]();
+    if (keyCommands[e.keyCode]) {
+      keyCommands[e.keyCode]();
+    }
   },
   componentDidMount() {
     document.addEventListener("keydown", this.handleKeyDown);
@@ -27,6 +30,7 @@ export default React.createClass({
     return (
       <div onClick={this.handleKeyPress}>
         <CharacterCanvas />
+        <BackgroundCanvas />
       </div>
     );
   }

@@ -1,17 +1,20 @@
 import tree from './tree';
+import characterPosition from './characterPosition';
+import backgroundPosition from './backgroundPosition';
 
-var xPos = tree.select('xPos'),
-    moveAmount = 10;
+var characterXPosCursor = tree.select('characterXPos'),
+    backgroundXPosCursor = tree.select('backgroundXPos'),
+    characterOrientationCursor = tree.select('characterOrientation');
 
 export default {
-  moveLeft() {
-    xPos.apply((x) => {
-      return x - moveAmount;
-    });
+  keyLeft() {
+    characterXPosCursor.apply(characterPosition.moveLeft);
+    characterOrientationCursor.set('left');
+    backgroundXPosCursor.apply(backgroundPosition.moveLeft);
   },
-  moveRight() {
-    xPos.apply((x) => {
-      return x + moveAmount;
-    });
+  keyRight() {
+    characterXPosCursor.apply(characterPosition.moveRight);
+    characterOrientationCursor.set('right');
+    backgroundXPosCursor.apply(backgroundPosition.moveRight);
   }
 };

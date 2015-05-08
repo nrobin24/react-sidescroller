@@ -1,5 +1,7 @@
 import Baobab from 'baobab';
 
 export default new Baobab({
-  xPos: 40
+  characterXPos: 40,
+  characterOrientation: 'right',
+  backgroundXPos: 500
 });

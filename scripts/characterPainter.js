@@ -1,8 +1,11 @@
+import trapperLeftImg from '../images/trapper-left.png';
+import trapperRightImg from '../images/trapper-right.png';
+
 var imgLeft = new Image(),
     imgRight = new Image();
 
-imgLeft.src = './images/trapper-left.png';
-imgRight.src = './images/trapper-right.png';
+imgLeft.src = trapperLeftImg;
+imgRight.src = trapperRightImg;
 
 var images = {
   left: imgLeft,

@@ -1,5 +1,6 @@
+import portlandImg from '../images/portland-metropolis-1888.jpg';
 var img = new Image();   // Create new img element
-img.src = './images/portland-metropolis-1888.jpg';
+img.src = portlandImg;
 
 export default (xPos, context) => {
   context.save();

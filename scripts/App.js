@@ -1,13 +1,11 @@
-import mixins from 'baobab-react/mixins';
+import {root} from 'baobab-react/mixins';
 import React from 'react';
 import CharacterCanvas from './CharacterCanvas';
 import BackgroundCanvas from './BackgroundCanvas';
 import actions from './actions';
 
-var mixin = mixins.root;
-
 export default React.createClass({
-  mixins: [mixin],
+  mixins: [root],
   handleKeyLeftPress() {
     actions.keyLeft();
   },
@@ -28,7 +26,7 @@ export default React.createClass({
   },
   render: function() {
     return (
-      <div onClick={this.handleKeyPress}>
+      <div>
         <CharacterCanvas />
         <BackgroundCanvas />
       </div>

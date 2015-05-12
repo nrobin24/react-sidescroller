@@ -1,5 +1,8 @@
 import React from 'react';
 import App from './App';
 import tree from './tree';
+import images from './images';
 
-React.render(<App tree={tree}/>, document.getElementById('root'));
+images.load().then(() => {
+  React.render(<App tree={tree}/>, document.getElementById('root'));
+});

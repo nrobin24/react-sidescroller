@@ -1,5 +1,5 @@
 import React from 'react';
-import mixins from 'baobab-react/mixins';
+import {branch} from 'baobab-react/mixins';
 import backgroundPainter from './backgroundPainter';
 
 var canvasStyle = {
@@ -10,7 +10,7 @@ var canvasStyle = {
 };
 
 export default React.createClass({
-  mixins: [mixins.branch],
+  mixins: [branch],
   cursors: {
     xPos: ['backgroundXPos']
   },

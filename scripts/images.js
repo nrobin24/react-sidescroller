@@ -15,8 +15,8 @@ export default {
   },
   elements: {},
   sources: {
-    trapperLeft: '../images/trapper-left.png',
-    trapperRight: '../images/trapper-right.png',
-    background: '../images/portland-metropolis-1888.jpg'
+    trapperLeft: '/images/trapper-left.png',
+    trapperRight: '/images/trapper-right.png',
+    background: '/images/portland-metropolis-1888.jpg'
   }
 };

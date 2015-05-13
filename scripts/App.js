@@ -4,6 +4,13 @@ import CharacterCanvas from './CharacterCanvas';
 import BackgroundCanvas from './BackgroundCanvas';
 import actions from './actions';
 
+var paragraphStyle = {
+  position: 'absolute',
+  left: 0,
+  top:0,
+  zIndex: 3
+};
+
 export default React.createClass({
   mixins: [root],
   handleKeyLeftPress() {
@@ -27,7 +34,7 @@ export default React.createClass({
   render: function() {
     return (
       <div>
-        <p>Use the right and left arrow keys to move</p>
+        <p style={paragraphStyle}>Use the right and left arrow keys to move</p>
         <CharacterCanvas />
         <BackgroundCanvas />
       </div>

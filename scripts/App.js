@@ -27,6 +27,7 @@ export default React.createClass({
   render: function() {
     return (
       <div>
+        <p>Use the right and left arrow keys to move</p>
         <CharacterCanvas />
         <BackgroundCanvas />
       </div>

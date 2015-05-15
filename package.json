@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "description": "A sidescroller game written in react",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "build": "webpack --config webpack-prod.config.js -p"
   },
   "repository": {
     "type": "git",

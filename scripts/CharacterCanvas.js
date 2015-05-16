@@ -12,8 +12,8 @@ var canvasStyle = {
 export default React.createClass({
   mixins: [branch],
   cursors: {
-    xPos: ['characterXPos'],
-    orientation: ['characterOrientation']
+    windowX: ['player', 'windowX'],
+    orientation: ['player', 'orientation']
   },
   componentDidMount() {
     this.paint();
@@ -23,7 +23,7 @@ export default React.createClass({
   },
   paint() {
     let context = this.getDOMNode().getContext('2d');
-    characterPainter(this.state.xPos, this.state.orientation, context);
+    characterPainter(this.state.windowX, this.state.orientation, context);
   },
   render: function() {
     return (

@@ -12,7 +12,7 @@ var canvasStyle = {
 export default React.createClass({
   mixins: [branch],
   cursors: {
-    xPos: ['backgroundXPos']
+    cameraX: ['camera','gameX']
   },
   componentDidMount() {
     this.paint();
@@ -22,7 +22,7 @@ export default React.createClass({
   },
   paint() {
     let context = this.getDOMNode().getContext('2d');
-    backgroundPainter(this.state.xPos, context);
+    backgroundPainter(this.state.cameraX, context);
   },
   render: function() {
     return (

@@ -1,45 +1,44 @@
 import tree from './tree';
+import R from 'ramda';
 
 var player = tree.select('player'),
     camera = tree.select('camera'),
-    moveVelocity = 10,
-    leftPlayerBound = 100,
-    rightPlayerBound = 400,
+    moveVelocity = 20,
+    leftWindowBound = 100,
+    rightWindowBound = 400,
     leftGameBound = 250,
     rightGameBound = 1500;
 
+var isWithinWindowBounds = R.allPass([
+  R.lt(leftWindowBound),
+  R.gt(rightWindowBound)
+]);
 
-function isWithin(min, max, x) {
-  return x > min && x < max;
-}
+var isWithinGameBounds = R.allPass([
+  R.lt(leftGameBound),
+  R.gt(rightGameBound)
+]);
 
-function isWithinPlayerBounds(x) {
-  return isWithin(leftPlayerBound, rightPlayerBound, x);
-}
-
-function isWithinGameBounds(x) {
-  return isWithin(leftGameBound, rightGameBound, x);
-}
-
-function moveCursor(cursor, v) {
-  cursor.apply(x => x + v);
-}
+var orientPlayer = R.ifElse(R.lt(0), R.always('right'), R.always('left'));
 
 function movePlayer(v) {
-  player.select('orientation').set(v < 0 ? 'left' : 'right');
+  let plusMove = R.add(v);
+  player.select('orientation').set(orientPlayer(v));
   //position for game units
-  let gX = player.select('gameX');
-  moveCursor(gX, isWithinGameBounds(gX.get() + v) ? v : 0);
+  player.select('gameX').apply(x =>
+    isWithinGameBounds(plusMove(x)) ? plusMove(x) : x
+  );
   //position for window display
-  let wX = player.select('windowX');
-  console.log('windowX is: ' + wX.get());
-  moveCursor(wX, isWithinPlayerBounds(wX.get() + v) ? v : 0);
+  player.select('windowX').apply(x =>
+    isWithinWindowBounds(plusMove(x)) ? plusMove(x) : x
+  );
 }
 
 function moveCamera(v) {
-  let wX = player.select('windowX');
-  let cX = camera.select('gameX');
-  moveCursor(cX, isWithinPlayerBounds(wX.get() + v) ? 0 : v);
+  let plusMove = R.add(v);
+  camera.select('gameX').apply(x =>
+    isWithinWindowBounds(plusMove(player.select('windowX').get())) ? x : plusMove(x)
+  );
 }
 
 function moveAll(v) {
